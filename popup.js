@@ -10,27 +10,11 @@ changeColor.addEventListener("click", async () => {
   
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      function: setPageBackgroundColor,
+      function: on,
     });
   });
-  
-  // The body of this function will be executed as a content script inside the
-  // current page
-  function setPageBackgroundColor() {
-    chrome.storage.sync.get("color", ({ color }) => {
-      document.body.style.backgroundColor = color;
-    });
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.requested == "createDiv"){
-            console.log("Created");
-            var div = document.createElement("div");
-            div.style.width = "100px";
-            div.style.height = "100px";
-            div.innerHTML = "Hello";
-            document.body.appendChild(div);
-            sendResponse({confirmation: "Successfully created div"});
-        }
-    });
+ 
+  function on() {
+    document.getElementById("overlay").style.display = "block";
   }
+  
