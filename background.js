@@ -1,5 +1,9 @@
 //// background.js ////
-
+let color = '#3aa757';
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.set({ color });
+  console.log('Default background color set to %cgreen', `color: ${color}`);
+});
 // Where we will expose all the data we retrieve from storage.sync.
 const storageCache = {};
 // Asynchronously retrieve data from storage.sync, then cache it.
@@ -7,19 +11,6 @@ const initStorageCache = getAllStorageSyncData().then(items => {
   // Copy the data retrieved from storage into storageCache.
   Object.assign(storageCache, items);
 });
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.requested == "createDiv"){
-            console.log("Created");
-            var div = document.createElement("div");
-            div.style.width = "100px";
-            div.style.height = "100px";
-            div.innerHTML = "Hello";
-            document.body.appendChild(div);
-            sendResponse({confirmation: "Successfully created div"});
-        }
-    });
 
 chrome.action.onClicked.addListener(async (tab) => {
   try {
