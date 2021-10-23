@@ -1,0 +1,48 @@
+.navbar {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    height: 110px;
+    overflow: hidden;
+    background-color: #E8EFEE;
+    position: absolute;
+    bottom: 20px;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: bottom;
+    z-index: -2;
+  }
+  @font-face {
+    font-family: myFirstFont;
+    src: url(margin.otf);
+  }
+  .heading {
+    position: absolute;
+    height: 151%;
+    width: 10%;
+    display: flex;
+    z-index: 0;
+    font-size: 26px;
+    font-family: myFirstFont;
+    color: #FFA72F;
+  }
+  .navbar .active {
+    z-index: 0;
+  }
+  .navbar a {
+    position: relative;
+    color: #f2f2f2;
+    text-align: center;
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0px auto;
+    bottom: -15px;
+  }
+  
+  .navbar a:hover {
+    background: #fff;
+    color: black;
+    z-index: -1;
+  }

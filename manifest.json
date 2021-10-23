@@ -2,12 +2,12 @@
 "name": "surfboard",
 "description": "create new boards to surf the web!",
 "version": "1.0",
-"manifest_version": 3,
+"manifest_version": 2,
 "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
     },
-"permissions": ["storage", "activeTab", "scripting"],
-"action": {
+"permissions": ["storage", "activeTab", "tabs"],
+"browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
         "16": "surfboard_icon.png",
@@ -23,14 +23,13 @@
 	"48": "surfboard_icon.png",
 	"128": "surfboard_icon.png"
 },
+"content_scripts" : [
+    {
+        "matches": ["http://*/*", "https://*/*"],
+        "css": ["style.css"],
+        "js": ["popup.js"]
+    }
+],
+"web_accessible_resources": ["toolbar.html"]
 
-"content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "css": ["style.css"],
-    "js": ["popup.js"]
-}],
-"web_accessible_resources": [{
-    "resources": ["popup.js"],
-    "matches": ["http://*/*", "https://*/*"]
-}]
 }
