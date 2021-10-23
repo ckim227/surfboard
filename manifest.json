@@ -10,18 +10,18 @@
 "action": {
     "default_popup": "popup.html",
     "default_icon": {
-        "16": "surfboard_design-3.png",
-        "32": "surfboard_design-3.png",
-        "48": "surfboard_design-3.png",
-        "128": "surfboard_design-3.png"
+        "16": "surfboard_icon.png",
+        "32": "surfboard_icon.png",
+        "48": "surfboard_icon.png",
+        "128": "surfboard_icon.png"
     }
 
     },
 "icons" : {
-	"16": "surfboard_design-3.png",
-	"32": "surfboard_design-3.png",
-	"48": "surfboard_design-3.png",
-	"128": "surfboard_design-3.png"
+	"16": "surfboard_icon.png",
+	"32": "surfboard_icon.png",
+	"48": "surfboard_icon.png",
+	"128": "surfboard_icon.png"
 },
 
 "content_scripts": [{
