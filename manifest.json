@@ -8,8 +8,22 @@
     },
 "permissions": ["storage", "activeTab", "scripting"],
 "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+        "16": "surfboard_design-3.png",
+        "32": "surfboard_design-3.png",
+        "48": "surfboard_design-3.png",
+        "128": "surfboard_design-3.png"
+    }
+
     },
+"icons" : {
+	"16": "surfboard_design-3.png",
+	"32": "surfboard_design-3.png",
+	"48": "surfboard_design-3.png",
+	"128": "surfboard_design-3.png"
+},
+
 "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
     "css": ["style.css"],

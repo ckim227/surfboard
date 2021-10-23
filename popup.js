@@ -20,4 +20,17 @@ changeColor.addEventListener("click", async () => {
     chrome.storage.sync.get("color", ({ color }) => {
       document.body.style.backgroundColor = color;
     });
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.requested == "createDiv"){
+            console.log("Created");
+            var div = document.createElement("div");
+            div.style.width = "100px";
+            div.style.height = "100px";
+            div.innerHTML = "Hello";
+            document.body.appendChild(div);
+            sendResponse({confirmation: "Successfully created div"});
+        }
+    });
   }

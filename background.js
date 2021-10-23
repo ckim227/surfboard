@@ -1,32 +1,51 @@
-// background.js
-let db = null;
+//// background.js ////
 
-function create_database() {
-    const request = window.indexedDB.open('MyTestDB');
+// Where we will expose all the data we retrieve from storage.sync.
+const storageCache = {};
+// Asynchronously retrieve data from storage.sync, then cache it.
+const initStorageCache = getAllStorageSyncData().then(items => {
+  // Copy the data retrieved from storage into storageCache.
+  Object.assign(storageCache, items);
+});
 
-    request.onerror = function (event) {
-        console.log("Problem opening DB.");
-    }
-
-    request.onupgradeneeded = function (event) {
-        db = event.target.result;
-
-        let objectStore = db.createObjectStore('roster', {
-            keyPath: 'email'
-        });
-
-        objectStore.transaction.oncomplete = function (event) {
-            console.log("ObjectStore Created.");
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.requested == "createDiv"){
+            console.log("Created");
+            var div = document.createElement("div");
+            div.style.width = "100px";
+            div.style.height = "100px";
+            div.innerHTML = "Hello";
+            document.body.appendChild(div);
+            sendResponse({confirmation: "Successfully created div"});
         }
-    }
+    });
 
-    request.onsuccess = function (event) {
-        db = event.target.result;
-        console.log("DB OPENED.");
-        insert_records(roster);
+chrome.action.onClicked.addListener(async (tab) => {
+  try {
+    await initStorageCache;
+  } catch (e) {
+    // Handle error that occurred during storage initialization.
+  }
+  // Normal action handler logic.
+});
 
-        db.onerror = function (event) {
-            console.log("FAILED TO OPEN DB.")
-        }
-    }
+// Reads all data out of storage.sync and exposes it via a promise.
+//
+// Note: Once the Storage API gains promise support, this function
+// can be greatly simplified.
+function getAllStorageSyncData() {
+  // Immediately return a promise and start asynchronous work
+  return new Promise((resolve, reject) => {
+    // Asynchronously fetch all data from storage.sync.
+    chrome.storage.sync.get(null, (items) => {
+      // Pass any observed errors down the promise chain.
+      if (chrome.runtime.lastError) {
+        return reject(chrome.runtime.lastError);
+      }
+      // Pass the data retrieved from storage down the promise chain.
+      resolve(items);
+    });
+  });
+  
 }
