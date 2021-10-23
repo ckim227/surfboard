@@ -1,6 +1,23 @@
 {
-"name": "sexTest",
-"description": "sex!",
+"name": "surfboard",
+"description": "create new boards to surf the web!",
 "version": "1.0",
-"manifest_version": 3
+"manifest_version": 3,
+"background": {
+    "service_worker": "background.js"
+    },
+"permissions": ["storage", "activeTab", "scripting"],
+"action": {
+    "default_popup": "popup.html"
+    },
+"content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "css": ["style.css"],
+    "js": "toolbar.js"
+}],
+"web_accessible_resources": [
+    "toolbar.html",
+    "style.css"
+]
+
 }
