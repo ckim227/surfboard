@@ -30,6 +30,6 @@
         "js": ["popup.js"]
     }
 ],
-"web_accessible_resources": ["toolbar.html", "popup.html"]
+"web_accessible_resources": ["toolbar.html", "popup.html", "stickynote.html"]
 
 }

@@ -37,34 +37,4 @@ button.current {
   max-width: 80%;
 }
 
-.note.active {
-  transform: translate(-50%, -50%) scale(1);
-
-}
-
-.note-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid black;
-}
-
-.note-header .title {
-  font-size: 1.25rem;
-  font-weight:bold;
-}
-
-.note-header .close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 1.25 rem;
-  font-weight: bold
-}
-
-.note-body {
-  padding: 10px 15px;
-}
 

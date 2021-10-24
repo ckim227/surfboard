@@ -10,12 +10,15 @@ let iframe = document.createElement('iframe');
   iframe.src = chrome.extension.getURL("toolbar.html");
   document.body.appendChild(iframe);
 
-let uframe = document.createElement('iframe');
+  let uframe = document.createElement('iframe');
   uframe.style.height = "100%";
-  uframe.style.width = "100%";
+  uframe.style.width = "30%";
   uframe.style.position = "fixed";
   uframe.style.top = "100px";
-  uframe.style.right = "100px";
+  uframe.style.right = "-150px";
+  //iframe.style.zIndex = "9000000000000000000";
+  uframe.src = chrome.extension.getURL("stickynote.html");
+  document.body.appendChild(uframe);
   //iframe.style.zIndex = "9000000000000000000";
   //uframe.src = chrome.extension.getURL("borad.png");
   //document.body.appendChild(uframe);
