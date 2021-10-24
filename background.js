@@ -5,12 +5,6 @@ chrome.runtime.onInstalled.addListener(() => {
   console.log('Default background color set to %cgreen', `color: ${color}`);
 });
 
-chrome.runtime.onMessage.addListener(
-  function(message, sender, sendResponse) {
-     tab = message;
-      
-  });
-
     // Where we will expose all the data we retrieve from storage.sync.
     const storageCache = {};
     // Asynchronously retrieve data from storage.sync, then cache it.
@@ -18,7 +12,6 @@ chrome.runtime.onMessage.addListener(
       // Copy the data retrieved from storage into storageCache.
       Object.assign(storageCache, items);
     });
-
 
 
     chrome.browserAction.onClicked.addListener(async (tab) => {
